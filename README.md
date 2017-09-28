@@ -2,7 +2,7 @@
 
 
 # GETTING STARTED
-This jar file created as a Final Project of Object Oriented Programming 2 course at Sheridan College.
+This project has been created as a Final Project of Object Oriented Programming 2 course at Sheridan College.
 Purpose of this application is creating a patient database for veterinaries.
 
 
