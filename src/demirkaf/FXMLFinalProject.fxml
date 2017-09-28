@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
+<?import javafx.geometry.*?> 
+<?import javafx.scene.control.cell.*?>
+<?import java.net.URL?>
+<?import javafx.scene.image.*?>
+
+<!--
+Name: F. Fulya Demirkan
+File: FXMLFinalProject.fxml
+Other Files in this Project: 
+- Pet.java
+- PetList.java
+- Breed.java
+- FXMLFinalProjectController.java
+- main.css
+
+Main class: demirkaf_FinalProject.java
+-->
+ 
+<VBox fx:id="main" xmlns:fx="http://javafx.com/fxml/1" 
+      fx:controller="demirkaf.FXMLFinalProjectController">
+    <children>
+        <BorderPane fx:id="mainPane">
+            <left>
+                <!-- PET INFORMATION AREA -->
+                <GridPane vgap="10" hgap="20">
+                    <BorderPane.margin>
+                        <Insets top="10" right="10" bottom="10" left="10" />
+                    </BorderPane.margin>
+                    <children>
+                        <Label text="ID" minWidth="50" GridPane.rowIndex="0" 
+                               GridPane.columnIndex="0"/>
+                        <TextField fx:id="txtId" minWidth="210" editable="false"
+                                   GridPane.rowIndex="0" 
+                                   GridPane.columnIndex="1">
+                        </TextField>
+                        <Label text="Name" minWidth="50" GridPane.rowIndex="1" 
+                               GridPane.columnIndex="0"/>
+                        <TextField fx:id="txtName" minWidth="210"
+                                   GridPane.rowIndex="1" 
+                                   GridPane.columnIndex="1"/>
+                        <Label text="Owner"  minWidth="50" GridPane.rowIndex="2" 
+                               GridPane.columnIndex="0"/>
+                        <TextField minWidth="200" fx:id="txtOwner" 
+                                   GridPane.rowIndex="2" 
+                                   GridPane.columnIndex="1"/>
+                        <Label text="Birthdate" minWidth="50" 
+                               GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                        <DatePicker fx:id="dpBirthdate" minWidth="210" 
+                                    GridPane.rowIndex="3" 
+                                    GridPane.columnIndex="1" />
+                        <Label text="Gender" minWidth="50" GridPane.rowIndex="4" 
+                               GridPane.columnIndex="0"/>
+                        <ComboBox fx:id="ddlGender" promptText="Choose One" 
+                                  minWidth="210" editable="false" 
+                                  styleClass="ddlDisabled" visibleRowCount="2" 
+                                  GridPane.rowIndex="4" 
+                                  GridPane.columnIndex="1"/>
+                        <Label text="Species" minWidth="50" GridPane.rowIndex="5" 
+                               GridPane.columnIndex="0"/>
+                        <ComboBox fx:id="ddlSpecies" promptText="Choose One"
+                                  minWidth="210" editable="false" 
+                                  styleClass="ddlDisabled" visibleRowCount="10" 
+                                  GridPane.rowIndex="5" 
+                                  GridPane.columnIndex="1"/>
+                        <Label text="Breed" minWidth="50" GridPane.rowIndex="6" 
+                               GridPane.columnIndex="0"/>
+                        <ComboBox fx:id="ddlBreed" promptText="Choose One" 
+                                  minWidth="210" editable="false" 
+                                  styleClass="ddlDisabled" visibleRowCount="10" 
+                                  GridPane.rowIndex="6" 
+                                  GridPane.columnIndex="1"/>
+                        <Label fx:id="lblError" text="" GridPane.rowIndex="7" 
+                               GridPane.columnIndex="0" 
+                               GridPane.columnSpan="2"/>
+                        <ImageView  fx:id="imgPet" fitHeight="200" 
+                                    fitWidth="200" preserveRatio="true" 
+                                    GridPane.rowIndex="8" 
+                                    GridPane.columnIndex="1" 
+                                    GridPane.halignment="CENTER">
+                            <image>
+                                <Image url="@res/other.png" />
+                            </image>
+                        </ImageView>
+                    </children>
+                </GridPane>
+            </left>
+            <center>
+                <!-- TABLEVIEW AREA FOR ALL RECORDS -->
+                <GridPane>
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="ALWAYS" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints vgrow="ALWAYS" />
+                    </rowConstraints>
+                    <BorderPane.margin>
+                        <Insets top="10" right="10" bottom="10" left="10" />
+                    </BorderPane.margin>
+                    <TableView fx:id="tblPets" >
+                        <placeholder>
+                            <Label text=""/>
+                        </placeholder>
+                        <columnResizePolicy>
+                            <!-- This error is a netbeans bug -->
+                            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                        </columnResizePolicy>
+                        <columns>
+                            <TableColumn fx:id="idColumn" text="Id" 
+                                         prefWidth="60" resizable="true" >
+                                <cellValueFactory>
+                                    <PropertyValueFactory property="petId" />
+                                </cellValueFactory>
+                            </TableColumn>
+                            <TableColumn fx:id="petNameColumn" text="Pet Name"  
+                                         prefWidth="175" resizable="true" >
+                                <cellValueFactory>
+                                    <PropertyValueFactory property="petName" />
+                                </cellValueFactory>
+                            </TableColumn>
+                            <TableColumn fx:id="ownerNameColumn" 
+                                         prefWidth="175" text="Owner Name"  resizable="true"  >
+                                <cellValueFactory>
+                                    <PropertyValueFactory property="ownerName"/>
+                                </cellValueFactory>
+                            </TableColumn>
+                            <TableColumn fx:id="speciesColumn" text="Species" 
+                                         minWidth="100" resizable="true"  >
+                                <cellValueFactory>
+                                    <PropertyValueFactory property="species"  />
+                                </cellValueFactory>
+                            </TableColumn>
+                        </columns>
+                        <sortOrder>
+                            <fx:reference source="idColumn" />
+                        </sortOrder>
+                    </TableView>
+                </GridPane> 
+            </center>
+            <bottom>
+                <!-- BUTTONS AREA -->
+                <GridPane vgap="20" hgap="20">
+                    <BorderPane.margin>
+                        <Insets top="20" right="10" bottom="20" left="10" />
+                    </BorderPane.margin>
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="NEVER" />
+                        <ColumnConstraints hgrow="ALWAYS" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints percentHeight="50.0" />
+                        <RowConstraints percentHeight="50.0" />
+                    </rowConstraints>
+                    <children>
+                        <!-- ADD / EDIT / DELETE / SAVE / CANCEL BUTTONS -->
+                        <HBox  alignment="CENTER_RIGHT" spacing="20" 
+                               minWidth="75" GridPane.rowIndex="0" 
+                               GridPane.columnIndex="1" 
+                               GridPane.valignment="CENTER" >
+                            <children>
+                                <Button fx:id="btnNew" text="_New" 
+                                        mnemonicParsing="true" minWidth="75" 
+                                        onAction="#newEntry" />
+                                <Button fx:id="btnEdit" text="_Edit" 
+                                        mnemonicParsing="true" minWidth="75" 
+                                        onAction="#toggleEdit" />
+                                <Button fx:id="btnDelete" text="_Delete" 
+                                        mnemonicParsing="true" minWidth="75" 
+                                        onAction="#delete" />
+                                <Button fx:id="btnSave" text="_Save" 
+                                        mnemonicParsing="true" minWidth="75" 
+                                        onAction="#addEdit"/>
+                                <Button fx:id="btnCancel" text="_Cancel" 
+                                        mnemonicParsing="true" minWidth="75" 
+                                        onAction="#cancel" />
+                            </children>
+                        </HBox>
+                        <!-- NAVIGATION AND SEARCH BUTTONS -->
+                        <HBox alignment="CENTER_RIGHT" spacing="20" 
+                              minWidth="75" GridPane.rowIndex="1" 
+                              GridPane.columnIndex="1" 
+                              GridPane.valignment="CENTER" >
+                            <children>
+                                <Button fx:id="btnToggleSearch" text="Searc_h" 
+                                        mnemonicParsing="true" minWidth="75"  
+                                        onAction="#swap"/>
+                                <Button fx:id="btnFirst" text="_First" 
+                                        mnemonicParsing="true" minWidth="75" 
+                                        onAction="#navigation" />
+                                <Button fx:id="btnPrevious" text="_Previous" 
+                                        mnemonicParsing="true" minWidth="75"  
+                                        onAction="#navigation" />
+                                <Button fx:id="btnNext" text="Ne_xt" 
+                                        mnemonicParsing="true" minWidth="75" 
+                                        onAction="#navigation"/>
+                                <Button fx:id="btnLast" text="_Last" 
+                                        mnemonicParsing="true" minWidth="75" 
+                                        onAction="#navigation" />
+                            </children>
+                        </HBox>
+                    </children>
+                </GridPane>
+            </bottom>
+        </BorderPane>
+    </children>
+    <!-- SEARCH PANE FOR SWAPPING PANES -->
+    <fx:define>
+        <BorderPane fx:id="searchPane">
+            <fx:define>
+                <ToggleGroup fx:id="grpSearch"/>
+            </fx:define>
+            <top>
+                <!-- SEARCH OPTIONS  AND SEARCH BUTTON -->
+                <VBox spacing="10">
+                    <BorderPane.margin>
+                        <Insets top="10" right="10" bottom="10" left="10" />
+                    </BorderPane.margin>
+                    <HBox spacing="10">
+                        <Label text="Search by:" />
+                        <RadioButton fx:id="optByPetName" text="_Pet Name" 
+                                     mnemonicParsing="true"
+                                     toggleGroup="$grpSearch" selected="true" />
+                        <RadioButton fx:id="optByOwnerName" text="_Owner Name" 
+                                     mnemonicParsing="true"
+                                     toggleGroup="$grpSearch" />
+                        <CheckBox fx:id="chkIsDeleted" 
+                                  text="Search only in _deleted records." 
+                                  mnemonicParsing="true" />
+                    </HBox>
+                    <HBox spacing="10">
+                        <Label text="Enter Name"/> 
+                        <TextField fx:id="txtSearchName" minWidth="200" 
+                                   promptText="Enter Pet Name"/>
+                        <Button fx:id="btnSearch" text="_Search" 
+                                mnemonicParsing="true" minWidth="75"
+                                onAction="#search" />
+                    </HBox>
+                </VBox>
+            </top>
+            <center>  
+                <!-- SEARCH RESULTS TABLEVIEW AREA -->
+                <TableView fx:id="tblSearch" minWidth="450" minHeight="450">
+                    <placeholder>
+                        <Label fx:id="lblSearch" text=""/>
+                    </placeholder>
+                    <columnResizePolicy>
+                        <!-- This error is a netbeans bug -->
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                    </columnResizePolicy>
+                    <columns>
+                        <TableColumn fx:id="idColumnSearch" text="Id" 
+                                     minWidth="20" >
+                            <cellValueFactory>
+                                <PropertyValueFactory property="petId" />
+                            </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn fx:id="petNameSearchColumn" text="Pet Name" 
+                                     minWidth="150" >
+                            <cellValueFactory>
+                                <PropertyValueFactory property="petName" />
+                            </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn fx:id="ownerNameSearchColumn" 
+                                     text="Owner Name" minWidth="150" >
+                            <cellValueFactory>
+                                <PropertyValueFactory property="ownerName" />
+                            </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn fx:id="birthdateSearchColumn" 
+                                     text="Birthdate" minWidth="50" >
+                            <cellValueFactory>
+                                <PropertyValueFactory property="birthdate" />
+                            </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn fx:id="genderSearchColumn" text="Gender" 
+                                     minWidth="40" >
+                            <cellValueFactory>
+                                <PropertyValueFactory property="gender" />
+                            </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn fx:id="speciesSearchColumn" text="Species" 
+                                     minWidth="40" >
+                            <cellValueFactory>
+                                <PropertyValueFactory property="species" />
+                            </cellValueFactory>
+                        </TableColumn>         
+                        <TableColumn fx:id="breedColumn" text="Breed" 
+                                     minWidth="75" >
+                        </TableColumn>           
+                    </columns>
+                    <sortOrder>
+                        <fx:reference source="idColumn" />
+                    </sortOrder>
+                </TableView>
+            </center>
+            <bottom>
+                <!-- SELECT / CANCEL BUTTONS -->
+                <HBox spacing="10">
+                    <BorderPane.margin>
+                        <Insets top="10" right="10" bottom="10" left="10" />
+                    </BorderPane.margin>
+                    <Button fx:id="btnSelect" text="S_elect" 
+                            mnemonicParsing="true" minWidth="75" 
+                            onAction="#select"/>
+                    <Button fx:id="btnRegister" text="_Register" 
+                            mnemonicParsing="true" minWidth="75"
+                            onAction="#retrieveItem"/>
+                    <Button fx:id="btnSearchCancel" text="_Back" 
+                            mnemonicParsing="true" minWidth="75" 
+                            onAction="#swap"/>
+                    
+                </HBox>
+            </bottom>
+        </BorderPane>
+    </fx:define>
+    <stylesheets>
+        <URL value="@css/main.css" />
+    </stylesheets>
+</VBox>

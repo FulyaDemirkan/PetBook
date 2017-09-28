@@ -1,0 +1,58 @@
+/*
+Name: F. Fulya Demirkan
+File: main.css
+Other Files in this Project: 
+- Pet.java
+- Breed.java
+- FXMLFinalProjectController.java
+- FXMLFinalProject.fxml
+- PetList.java
+
+Main class: demirkaf_FinalProject.java
+*/
+
+/* 
+    Created on : 7-Aug-2017, 2:11:27 PM
+    Author     : Fulya Demirkan
+*/
+
+/* Label and button shared font size */
+.label, .button {
+    -fx-font-size: 1em;
+    -fx-hgap: 10px;
+    -fx-vgap: 10px;
+}
+
+.label {
+    -fx-font-weight: bold;
+}
+
+/* Disabled ComboBox color settings for easy read */
+.ddlDisabled:disabled, .ddlDisabled:disabled > * {
+    -fx-opacity: 1;
+    -fx-background-color: gainsboro;
+}
+
+#lblError{
+    -fx-text-fill: red;
+    -fx-font-weight: bold;
+}
+
+/* input fields with invalid value */
+.error {
+    -fx-focus-color: #d35244;
+    -fx-faint-focus-color: #d3524422;
+
+    -fx-highlight-fill: -fx-accent;
+    -fx-highlight-text-fill: white;
+    -fx-background-color:
+        -fx-focus-color,
+        -fx-control-inner-background,
+        -fx-faint-focus-color,
+        linear-gradient(from 0px 0px to 0px 5px, 
+        derive(-fx-control-inner-background, -9%), 
+        -fx-control-inner-background);
+    -fx-background-insets: -0.2, 1, -1.4, 3;
+    -fx-background-radius: 3, 2, 4, 0;
+    -fx-prompt-text-fill: transparent;
+}

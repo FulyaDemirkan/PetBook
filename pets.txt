@@ -1,0 +1,11 @@
+1|Luka|Fulya Demirkan|2008-09-05|Female|Dog|DOG_GOLDEN_RETRIEVER|false
+2|Sansli|Fulya Demirkan|2005-08-01|Male|Cat|CAT_MIXED_BREED|false
+3|Cakil|Fulya Demirkan|2015-03-01|Female|Cat|CAT_MIXED_BREED|false
+4|Makkachin|Victor Nikiforov|2002-05-01|Female|Dog|DOG_POODLE|false
+5|Vicchan|Yuuri Katsuki|2003-08-05|Male|Dog|DOG_TOY_POODLE|false
+6|Drogon|Daenerys Targaryen|2011-04-24|Male|Dragon|DRAGON_DRAGON|false
+7|Ghost|John Snow|2011-03-01|Male|DireWolf|DIREWOLF_DIREWOLF|false
+8|Baroness Brownie VonMarshmallowsocks|Aragorn Son of Arathorn|2016-06-14|Female|Rabbit|RABBIT_RABBIT|false
+9|Sylvester|Granny|2000-08-01|Male|Cat|CAT_MIXED_BREED|false
+10|Toothless|Hiccup|2010-04-12|Male|Dragon|DRAGON_DRAGON|false
+11|fsf|ada|2017-08-15|Male|Cat|CAT_US_BOBTAIL|true
